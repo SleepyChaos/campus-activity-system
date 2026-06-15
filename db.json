@@ -1,0 +1,349 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123456",
+      "name": "校园活动管理员",
+      "role": "admin",
+      "college": "学生事务中心",
+      "avatar": "/images/avatar-admin.png"
+    },
+    {
+      "id": 2,
+      "username": "student01",
+      "password": "123456",
+      "name": "林知夏",
+      "role": "student",
+      "college": "计算机学院",
+      "avatar": "/images/avatar-student-a.png"
+    },
+    {
+      "id": 3,
+      "username": "student02",
+      "password": "123456",
+      "name": "陈屿",
+      "role": "student",
+      "college": "外国语学院",
+      "avatar": "/images/avatar-student-b.png"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "学术科技",
+      "color": "#2563eb",
+      "icon": "Monitor"
+    },
+    {
+      "id": 2,
+      "name": "文艺展演",
+      "color": "#e11d48",
+      "icon": "Microphone"
+    },
+    {
+      "id": 3,
+      "name": "体育竞赛",
+      "color": "#16a34a",
+      "icon": "Football"
+    },
+    {
+      "id": 4,
+      "name": "志愿服务",
+      "color": "#f59e0b",
+      "icon": "Sunrise"
+    },
+    {
+      "id": 5,
+      "name": "创新创业",
+      "color": "#7c3aed",
+      "icon": "Opportunity"
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "title": "AI 创新应用工作坊",
+      "categoryId": 1,
+      "categoryName": "学术科技",
+      "status": "open",
+      "location": "图书馆创客空间 301",
+      "date": "2026-06-20",
+      "time": "14:00-17:00",
+      "quota": 80,
+      "joined": 37,
+      "organizer": "计算机学院学生会",
+      "banner": "/images/activity-ai.png",
+      "cover": "/images/activity-ai.png",
+      "tags": [
+        "AI",
+        "实践",
+        "证书"
+      ],
+      "description": "围绕校园生活中的智能问答、海报生成和数据分析场景，带领同学完成一个轻量级 AI 应用原型。",
+      "highlights": [
+        "现场分组实践",
+        "优秀作品展示",
+        "导师点评"
+      ],
+      "requirement": "建议携带笔记本电脑，具备基础 JavaScript 或 Python 经验更佳。",
+      "checkinCode": "AI20260620"
+    },
+    {
+      "id": 2,
+      "title": "夏夜草坪音乐会",
+      "categoryId": 2,
+      "categoryName": "文艺展演",
+      "status": "open",
+      "location": "东区草坪",
+      "date": "2026-06-22",
+      "time": "19:00-21:00",
+      "quota": 300,
+      "joined": 168,
+      "organizer": "校艺术团",
+      "banner": "/images/activity-music.png",
+      "cover": "/images/activity-music.png",
+      "tags": [
+        "音乐",
+        "露天",
+        "社团"
+      ],
+      "description": "集合校园乐队、合唱团和街舞社的开放式演出，打造轻松的期末前夜活动。",
+      "highlights": [
+        "校园乐队联演",
+        "互动点歌",
+        "夜间灯光舞台"
+      ],
+      "requirement": "请提前报名入场，现场凭报名记录签到。",
+      "checkinCode": "MUSIC20260622"
+    },
+    {
+      "id": 3,
+      "title": "校园 3v3 篮球挑战赛",
+      "categoryId": 3,
+      "categoryName": "体育竞赛",
+      "status": "open",
+      "location": "西区篮球场",
+      "date": "2026-06-24",
+      "time": "16:00-18:30",
+      "quota": 96,
+      "joined": 52,
+      "organizer": "体育部",
+      "banner": "/images/activity-basketball.png",
+      "cover": "/images/activity-basketball.png",
+      "tags": [
+        "篮球",
+        "团队",
+        "奖品"
+      ],
+      "description": "以队伍为单位报名参加 3v3 挑战赛，系统中按个人报名演示，现场由工作人员进行队伍确认。",
+      "highlights": [
+        "小组循环赛",
+        "冠军纪念奖牌",
+        "运动补给"
+      ],
+      "requirement": "请穿运动鞋并注意热身，身体不适请勿参赛。",
+      "checkinCode": "BALL20260624"
+    },
+    {
+      "id": 4,
+      "title": "毕业季旧书漂流志愿活动",
+      "categoryId": 4,
+      "categoryName": "志愿服务",
+      "status": "open",
+      "location": "一站式学生服务大厅",
+      "date": "2026-06-25",
+      "time": "09:00-12:00",
+      "quota": 60,
+      "joined": 41,
+      "organizer": "青年志愿者协会",
+      "banner": "/images/activity-volunteer.png",
+      "cover": "/images/activity-volunteer.png",
+      "tags": [
+        "志愿",
+        "旧书",
+        "公益"
+      ],
+      "description": "协助毕业生整理闲置书籍，为低年级同学建立旧书认领专区。",
+      "highlights": [
+        "志愿时长记录",
+        "公益书架维护",
+        "现场物资整理"
+      ],
+      "requirement": "报名后请准时签到，建议穿舒适服装。",
+      "checkinCode": "BOOK20260625"
+    },
+    {
+      "id": 5,
+      "title": "创业项目路演训练营",
+      "categoryId": 5,
+      "categoryName": "创新创业",
+      "status": "open",
+      "location": "创新创业学院报告厅",
+      "date": "2026-06-28",
+      "time": "13:30-17:30",
+      "quota": 120,
+      "joined": 66,
+      "organizer": "创新创业学院",
+      "banner": "/images/activity-startup.png",
+      "cover": "/images/activity-startup.png",
+      "tags": [
+        "路演",
+        "商业计划",
+        "导师"
+      ],
+      "description": "面向有竞赛或创业想法的团队，讲解路演结构、商业模式表达和评委问答策略。",
+      "highlights": [
+        "真实项目点评",
+        "商业画布练习",
+        "模拟答辩"
+      ],
+      "requirement": "可以个人参加，也可以团队代表参加。",
+      "checkinCode": "START20260628"
+    },
+    {
+      "id": 6,
+      "title": "校园摄影打卡计划",
+      "categoryId": 2,
+      "categoryName": "文艺展演",
+      "status": "open",
+      "location": "南门集合",
+      "date": "2026-07-01",
+      "time": "15:00-18:00",
+      "quota": 100,
+      "joined": 24,
+      "organizer": "摄影协会",
+      "banner": "/images/activity-photo.png",
+      "cover": "/images/activity-photo.png",
+      "tags": [
+        "摄影",
+        "相册",
+        "打卡"
+      ],
+      "description": "带领同学拍摄校园建筑、花园和夜景，活动结束后可上传作品到活动相册。",
+      "highlights": [
+        "路线地图",
+        "构图指导",
+        "相册共创"
+      ],
+      "requirement": "手机或相机均可参加。",
+      "checkinCode": "PHOTO20260701"
+    },
+    {
+      "id": 7,
+      "title": "前端交互作品分享会",
+      "categoryId": 1,
+      "categoryName": "学术科技",
+      "status": "closed",
+      "location": "教学楼 B204",
+      "date": "2026-06-10",
+      "time": "18:30-20:00",
+      "quota": 90,
+      "joined": 90,
+      "organizer": "信息技术协会",
+      "banner": "/images/activity-frontend.png",
+      "cover": "/images/activity-frontend.png",
+      "tags": [
+        "Vue",
+        "作品",
+        "交流"
+      ],
+      "description": "展示 Vue、React、小程序等前端作品，交流项目结构、交互设计和答辩经验。",
+      "highlights": [
+        "作品讲解",
+        "代码交流",
+        "答辩建议"
+      ],
+      "requirement": "活动已结束，仅可查看相册。",
+      "checkinCode": "FE20260610"
+    },
+    {
+      "id": 8,
+      "title": "晨跑打卡月启动仪式",
+      "categoryId": 3,
+      "categoryName": "体育竞赛",
+      "status": "full",
+      "location": "田径场主席台",
+      "date": "2026-06-18",
+      "time": "07:20-08:00",
+      "quota": 150,
+      "joined": 150,
+      "organizer": "校团委",
+      "banner": "/images/activity-running.png",
+      "cover": "/images/activity-running.png",
+      "tags": [
+        "晨跑",
+        "健康",
+        "打卡"
+      ],
+      "description": "晨跑打卡月说明会，讲解后续积分、排名和纪念奖章领取规则。",
+      "highlights": [
+        "晨跑路线",
+        "积分规则",
+        "纪念奖章"
+      ],
+      "requirement": "名额已满，可关注后续补录通知。",
+      "checkinCode": "RUN20260618"
+    }
+  ],
+  "registrations": [
+    {
+      "id": 1,
+      "userId": 2,
+      "activityId": 1,
+      "status": "cancelled",
+      "appliedAt": "2026-06-12 10:15",
+      "checkedInAt": ""
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "activityId": 6,
+      "status": "checkedIn",
+      "appliedAt": "2026-06-11 19:21",
+      "checkedInAt": "2026-07-01 15:03"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "activityId": 2,
+      "status": "registered",
+      "appliedAt": "2026-06-13 08:46",
+      "checkedInAt": ""
+    },
+    {
+      "userId": 2,
+      "activityId": 1,
+      "status": "registered",
+      "appliedAt": "2026-06-15 22:57",
+      "checkedInAt": "",
+      "id": 4
+    }
+  ],
+  "photos": [
+    {
+      "id": 1,
+      "activityId": 6,
+      "userId": 2,
+      "title": "图书馆前的傍晚",
+      "url": "/images/album-library.png",
+      "createdAt": "2026-07-01 18:16"
+    },
+    {
+      "id": 2,
+      "activityId": 6,
+      "userId": 3,
+      "title": "南门集合留影",
+      "url": "/images/album-gate.png",
+      "createdAt": "2026-07-01 18:22"
+    },
+    {
+      "id": 3,
+      "activityId": 7,
+      "userId": 1,
+      "title": "前端作品分享现场",
+      "url": "/images/album-talk.png",
+      "createdAt": "2026-06-10 20:12"
+    }
+  ]
+}

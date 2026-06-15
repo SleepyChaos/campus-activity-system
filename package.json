@@ -1,0 +1,33 @@
+{
+  "name": "campus-activity-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "基于 Vue.js 的校园活动发布系统期末大作业",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "api": "json-server --watch db.json --port 3001",
+    "dev": "concurrently \"npm run api\" \"npm run serve\""
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.7.9",
+    "core-js": "^3.38.1",
+    "element-plus": "^2.8.8",
+    "qrcode": "^1.5.4",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.8",
+    "concurrently": "^9.1.0",
+    "json-server": "^0.17.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

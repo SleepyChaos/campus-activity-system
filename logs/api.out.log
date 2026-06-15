@@ -1,0 +1,30 @@
+
+> campus-activity-system@1.0.0 api
+> json-server --watch db.json --port 3001
+
+
+  \{^_^}/ hi!
+
+  Loading db.json
+  Done
+
+  Resources
+  http://localhost:3001/users
+  http://localhost:3001/categories
+  http://localhost:3001/activities
+  http://localhost:3001/registrations
+  http://localhost:3001/photos
+
+  Home
+  http://localhost:3001
+
+  Type s + enter at any time to create a snapshot of the database
+  Watching...
+
+[0mGET /activities [32m200[0m 26.981 ms - -[0m
+[0mGET /users?username=admin&password=123456 [32m200[0m 22.231 ms - 211[0m
+[0mGET /users?username=student01&password=123456 [32m200[0m 17.032 ms - 206[0m
+[0mGET /activities [32m200[0m 23.089 ms - -[0m
+[0mGET /categories [32m200[0m 21.785 ms - 490[0m
+[0mGET /photos?activityId=6 [32m200[0m 25.395 ms - 344[0m
+[0mGET /activities [32m200[0m 24.445 ms - -[0m
