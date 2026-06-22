@@ -8,8 +8,4 @@ export const listActivities = (params = {}) => {
 
 export const getActivity = id => request.get(`/activities/${id}`)
 
-export const createActivity = payload => request.post('/activities', payload)
-
 export const updateActivity = (id, payload) => request.patch(`/activities/${id}`, payload)
-
-export const removeActivity = id => request.delete(`/activities/${id}`)

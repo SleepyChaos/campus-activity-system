@@ -1,10 +1,7 @@
 import {
   listCategories,
   listActivities,
-  getActivity,
-  createActivity as createActivityApi,
-  updateActivity as updateActivityApi,
-  removeActivity as removeActivityApi
+  getActivity
 } from '@/api/activities'
 
 export default {
@@ -16,14 +13,7 @@ export default {
     loading: false
   }),
   getters: {
-    openActivities: state => state.activities.filter(item => item.status === 'open'),
-    featuredActivities: state => state.activities.filter(item => item.status === 'open').slice(0, 4),
-    categoryMap: state => {
-      return state.categories.reduce((map, category) => {
-        map[category.id] = category
-        return map
-      }, {})
-    }
+    featuredActivities: state => state.activities.filter(item => item.status === 'open').slice(0, 4)
   },
   mutations: {
     SET_CATEGORIES(state, categories) {
@@ -37,20 +27,6 @@ export default {
     },
     SET_LOADING(state, loading) {
       state.loading = loading
-    },
-    UPSERT_ACTIVITY(state, activity) {
-      const index = state.activities.findIndex(item => String(item.id) === String(activity.id))
-      if (index >= 0) {
-        state.activities.splice(index, 1, activity)
-      } else {
-        state.activities.unshift(activity)
-      }
-      if (String(state.currentActivity?.id) === String(activity.id)) {
-        state.currentActivity = activity
-      }
-    },
-    REMOVE_ACTIVITY(state, id) {
-      state.activities = state.activities.filter(item => String(item.id) !== String(id))
     }
   },
   actions: {
@@ -82,20 +58,6 @@ export default {
       } finally {
         commit('SET_LOADING', false)
       }
-    },
-    async createActivity({ commit }, payload) {
-      const { data } = await createActivityApi(payload)
-      commit('UPSERT_ACTIVITY', data)
-      return data
-    },
-    async updateActivity({ commit }, { id, payload }) {
-      const { data } = await updateActivityApi(id, payload)
-      commit('UPSERT_ACTIVITY', data)
-      return data
-    },
-    async removeActivity({ commit }, id) {
-      await removeActivityApi(id)
-      commit('REMOVE_ACTIVITY', id)
     }
   }
 }

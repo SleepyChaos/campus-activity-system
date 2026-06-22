@@ -35,20 +35,20 @@ const routes = [
     name: 'signup',
     component: () => import('@/views/user/SignupView.vue'),
     props: true,
-    meta: { requiresAuth: true, studentOnly: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/my/registrations',
     name: 'myRegistrations',
     component: () => import('@/views/user/MyRegistrationsView.vue'),
-    meta: { requiresAuth: true, studentOnly: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/checkin/:activityId',
     name: 'checkin',
     component: () => import('@/views/user/CheckinView.vue'),
     props: true,
-    meta: { requiresAuth: true, studentOnly: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/albums/:activityId',
@@ -61,32 +61,7 @@ const routes = [
     name: 'albumUpload',
     component: () => import('@/views/user/AlbumUploadView.vue'),
     props: true,
-    meta: { requiresAuth: true, studentOnly: true }
-  },
-  {
-    path: '/admin',
-    name: 'adminDashboard',
-    component: () => import('@/views/admin/AdminDashboardView.vue'),
-    meta: { requiresAuth: true, adminOnly: true }
-  },
-  {
-    path: '/admin/activities',
-    name: 'adminActivities',
-    component: () => import('@/views/admin/AdminActivitiesView.vue'),
-    meta: { requiresAuth: true, adminOnly: true }
-  },
-  {
-    path: '/admin/activities/new',
-    name: 'adminActivityNew',
-    component: () => import('@/views/admin/AdminActivityFormView.vue'),
-    meta: { requiresAuth: true, adminOnly: true }
-  },
-  {
-    path: '/admin/activities/:id/edit',
-    name: 'adminActivityEdit',
-    component: () => import('@/views/admin/AdminActivityFormView.vue'),
-    props: true,
-    meta: { requiresAuth: true, adminOnly: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/:pathMatch(.*)*',
@@ -109,18 +84,6 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !user) {
     ElMessage.warning('请先登录后再访问该页面')
     next({ path: '/login', query: { redirect: to.fullPath } })
-    return
-  }
-
-  if (to.meta.adminOnly && user?.role !== 'admin') {
-    ElMessage.error('当前账号没有管理员权限')
-    next('/')
-    return
-  }
-
-  if (to.meta.studentOnly && user?.role !== 'student') {
-    ElMessage.error('请切换学生账号体验该功能')
-    next('/')
     return
   }
 

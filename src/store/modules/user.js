@@ -8,11 +8,6 @@ export default {
     currentUser: null,
     loading: false
   }),
-  getters: {
-    isLogin: state => Boolean(state.currentUser),
-    isAdmin: state => state.currentUser?.role === 'admin',
-    isStudent: state => state.currentUser?.role === 'student'
-  },
   mutations: {
     SET_USER(state, user) {
       state.currentUser = user

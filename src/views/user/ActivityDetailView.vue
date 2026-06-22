@@ -93,14 +93,6 @@
               <el-button size="large" @click="$router.push(`/albums/${activity.id}`)">
                 查看活动相册
               </el-button>
-              <el-button
-                v-if="isAdmin"
-                type="warning"
-                size="large"
-                @click="$router.push(`/admin/activities/${activity.id}/edit`)"
-              >
-                管理员编辑
-              </el-button>
             </div>
           </el-card>
         </aside>
@@ -127,7 +119,6 @@ const registration = ref(null)
 const activity = computed(() => store.state.activity.currentActivity)
 const loading = computed(() => store.state.activity.loading)
 const currentUser = computed(() => store.state.user.currentUser)
-const isAdmin = computed(() => currentUser.value?.role === 'admin')
 const remainCount = computed(() => Math.max(0, Number(activity.value?.quota || 0) - Number(activity.value?.joined || 0)))
 const quotaPercent = computed(() => {
   if (!activity.value?.quota) return 0
@@ -142,14 +133,14 @@ const statusType = computed(() => {
   return map[activity.value?.status] || 'info'
 })
 const canSignup = computed(() => {
-  return currentUser.value?.role === 'student' &&
+  return Boolean(currentUser.value) &&
     activity.value?.status === 'open' &&
     remainCount.value > 0 &&
     !registration.value
 })
 
 const loadRegistration = async () => {
-  if (currentUser.value?.role !== 'student') {
+  if (!currentUser.value) {
     registration.value = null
     return
   }

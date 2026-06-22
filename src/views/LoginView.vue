@@ -5,10 +5,10 @@
       style="background-image: linear-gradient(90deg, rgba(12, 45, 68, 0.88), rgba(31, 143, 107, 0.68)), url('/images/login-campus.png')"
     >
       <el-tag type="success" effect="dark">模拟登录</el-tag>
-      <h1>用预置账号切换学生端和管理端</h1>
+      <h1>用预置学生账号体验报名、签到和相册流程</h1>
       <p>
         本项目使用 json-server 模拟后端数据，没有正式用户数据库，因此不提供注册功能。
-        答辩时可通过管理员和两个学生账号演示不同角色的权限与业务流程。
+        答辩时直接使用两个学生账号演示浏览活动、报名、签到和上传相册即可。
       </p>
       <div class="account-grid">
         <div
@@ -35,7 +35,7 @@
       </template>
       <el-form label-position="top" :model="form" @submit.prevent>
         <el-form-item label="用户名">
-          <el-input v-model="form.username" placeholder="admin / student01 / student02" />
+          <el-input v-model="form.username" placeholder="student01 / student02" />
         </el-form-item>
         <el-form-item label="密码">
           <el-input v-model="form.password" type="password" show-password placeholder="123456" />
@@ -71,13 +71,6 @@ const form = reactive({
 
 const quickAccounts = [
   {
-    username: 'admin',
-    password: '123456',
-    name: '校园活动管理员',
-    roleText: '管理员',
-    avatar: '/images/avatar-admin.png'
-  },
-  {
     username: 'student01',
     password: '123456',
     name: '林知夏',
@@ -98,11 +91,11 @@ const loading = computed(() => store.state.user.loading)
 const afterLogin = user => {
   ElMessage.success(`欢迎回来，${user.name}`)
   const redirect = route.query.redirect
-  if (redirect && !(redirect.startsWith('/admin') && user.role !== 'admin')) {
+  if (redirect) {
     router.push(redirect)
     return
   }
-  router.push(user.role === 'admin' ? '/admin' : '/')
+  router.push('/')
 }
 
 const submit = async () => {

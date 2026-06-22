@@ -44,7 +44,7 @@
 
     <div class="section-title">
       <h2>最新发布</h2>
-      <p>管理员发布或编辑活动后，首页与列表会同步更新。</p>
+      <p>活动数据来自 json-server，首页和列表页会同步展示最新内容。</p>
     </div>
     <div class="grid-3">
       <ActivityCard v-for="activity in latestActivities" :key="activity.id" :activity="activity" />

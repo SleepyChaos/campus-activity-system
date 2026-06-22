@@ -4,7 +4,7 @@
 
 ## 用户与登录
 
-- `GET /users?username=admin&password=123456`
+- `GET /users?username=student01&password=123456`
   - 用途：模拟登录校验。
   - 返回：匹配的用户数组，前端取第一项作为当前用户。
 
@@ -20,14 +20,8 @@
 - `GET /activities/:id`
   - 用途：获取活动详情。
 
-- `POST /activities`
-  - 用途：管理员发布活动。
-
 - `PATCH /activities/:id`
-  - 用途：管理员编辑活动，或报名/取消时更新已报名人数。
-
-- `DELETE /activities/:id`
-  - 用途：管理员删除活动。
+  - 用途：报名/取消时更新已报名人数。
 
 ## 报名与签到
 

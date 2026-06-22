@@ -18,8 +18,7 @@
       >
         <el-menu-item index="/">首页</el-menu-item>
         <el-menu-item index="/activities">活动广场</el-menu-item>
-        <el-menu-item v-if="isStudent" index="/my/registrations">我的报名</el-menu-item>
-        <el-menu-item v-if="isAdmin" index="/admin">管理端</el-menu-item>
+        <el-menu-item v-if="currentUser" index="/my/registrations">我的报名</el-menu-item>
       </el-menu>
 
       <div class="account-area">
@@ -27,7 +26,7 @@
           <el-avatar :size="34" :src="currentUser.avatar" />
           <div class="account-meta">
             <strong>{{ currentUser.name }}</strong>
-            <span>{{ roleText }}</span>
+            <span>{{ currentUser.college }}</span>
           </div>
           <el-button text type="primary" @click="logout">退出</el-button>
         </template>
@@ -56,10 +55,7 @@ const router = useRouter()
 const store = useStore()
 
 const currentUser = computed(() => store.state.user.currentUser)
-const isAdmin = computed(() => currentUser.value?.role === 'admin')
-const isStudent = computed(() => currentUser.value?.role === 'student')
-const activePath = computed(() => (route.path.startsWith('/admin') ? '/admin' : route.path))
-const roleText = computed(() => (isAdmin.value ? '管理员' : '学生用户'))
+const activePath = computed(() => route.path)
 
 const goHome = () => router.push('/')
 
