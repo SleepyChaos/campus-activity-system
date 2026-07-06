@@ -2,17 +2,31 @@
   <div>
     <section class="home-hero">
       <el-carousel height="360px" indicator-position="outside">
-        <el-carousel-item v-for="activity in carouselActivities" :key="activity.id">
-          <div class="hero-slide" :style="{ backgroundImage: `url(${activity.banner})` }">
+        <el-carousel-item
+          v-for="activity in carouselActivities"
+          :key="activity.id"
+        >
+          <div
+            class="hero-slide"
+            :style="{ backgroundImage: `url(${activity.banner})` }"
+          >
             <div class="hero-copy">
-              <el-tag type="success" effect="dark">{{ activity.categoryName }}</el-tag>
+              <el-tag type="success" effect="dark">{{
+                activity.categoryName
+              }}</el-tag>
               <h1>{{ activity.title }}</h1>
               <p>{{ activity.description }}</p>
               <div class="hero-actions">
-                <el-button type="primary" size="large" @click="$router.push(`/activities/${activity.id}`)">
+                <el-button
+                  type="primary"
+                  size="large"
+                  @click="$router.push(`/activities/${activity.id}`)"
+                >
                   查看活动
                 </el-button>
-                <el-button size="large" @click="$router.push('/activities')">浏览全部</el-button>
+                <el-button size="large" @click="$router.push('/activities')"
+                  >浏览全部</el-button
+                >
               </div>
             </div>
           </div>
@@ -28,7 +42,9 @@
         :style="{ borderColor: category.color }"
         @click="$router.push(`/activities/category/${category.id}`)"
       >
-        <span :style="{ backgroundColor: category.color }">{{ category.name.slice(0, 1) }}</span>
+        <span :style="{ backgroundColor: category.color }">{{
+          category.name.slice(0, 1)
+        }}</span>
         <strong>{{ category.name }}</strong>
         <small>查看分类活动</small>
       </div>
@@ -36,10 +52,14 @@
 
     <div class="section-title">
       <h2>热门推荐</h2>
-      <p>精选正在报名的校园活动，适合答辩演示完整报名流程。</p>
+      <p>精选正在报名的校园活动。</p>
     </div>
     <div class="grid-4" v-loading="loading">
-      <ActivityCard v-for="activity in featuredActivities" :key="activity.id" :activity="activity" />
+      <ActivityCard
+        v-for="activity in featuredActivities"
+        :key="activity.id"
+        :activity="activity"
+      />
     </div>
 
     <div class="section-title">
@@ -47,31 +67,41 @@
       <p>活动数据来自 json-server，首页和列表页会同步展示最新内容。</p>
     </div>
     <div class="grid-3">
-      <ActivityCard v-for="activity in latestActivities" :key="activity.id" :activity="activity" />
+      <ActivityCard
+        v-for="activity in latestActivities"
+        :key="activity.id"
+        :activity="activity"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
-import ActivityCard from '@/components/ActivityCard.vue'
+import { computed, onMounted } from "vue";
+import { useStore } from "vuex";
+import ActivityCard from "@/components/ActivityCard.vue";
 
-const store = useStore()
+const store = useStore();
 
-const loading = computed(() => store.state.activity.loading)
-const categories = computed(() => store.state.activity.categories)
-const activities = computed(() => store.state.activity.activities)
-const carouselActivities = computed(() => activities.value.filter(item => item.status === 'open').slice(0, 3))
-const featuredActivities = computed(() => store.getters['activity/featuredActivities'])
-const latestActivities = computed(() => [...activities.value].sort((a, b) => b.id - a.id).slice(0, 3))
+const loading = computed(() => store.state.activity.loading);
+const categories = computed(() => store.state.activity.categories);
+const activities = computed(() => store.state.activity.activities);
+const carouselActivities = computed(() =>
+  activities.value.filter((item) => item.status === "open").slice(0, 3),
+);
+const featuredActivities = computed(
+  () => store.getters["activity/featuredActivities"],
+);
+const latestActivities = computed(() =>
+  [...activities.value].sort((a, b) => b.id - a.id).slice(0, 3),
+);
 
 onMounted(async () => {
   await Promise.all([
-    store.dispatch('activity/fetchCategories'),
-    store.dispatch('activity/fetchActivities')
-  ])
-})
+    store.dispatch("activity/fetchCategories"),
+    store.dispatch("activity/fetchActivities"),
+  ]);
+});
 </script>
 
 <style scoped>

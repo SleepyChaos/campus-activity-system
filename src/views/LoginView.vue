@@ -2,13 +2,20 @@
   <div class="login-page">
     <section
       class="login-copy"
-      style="background-image: linear-gradient(90deg, rgba(12, 45, 68, 0.88), rgba(31, 143, 107, 0.68)), url('/images/login-campus.png')"
+      style="
+        background-image: linear-gradient(
+            90deg,
+            rgba(12, 45, 68, 0.88),
+            rgba(31, 143, 107, 0.68)
+          ),
+          url('/images/login-campus.png');
+      "
     >
       <el-tag type="success" effect="dark">模拟登录</el-tag>
       <h1>用预置学生账号体验报名、签到和相册流程</h1>
       <p>
-        本项目使用 json-server 模拟后端数据，没有正式用户数据库，因此不提供注册功能。
-        答辩时直接使用两个学生账号演示浏览活动、报名、签到和上传相册即可。
+        本项目使用 json-server
+        模拟后端数据，没有正式用户数据库，因此不提供注册功能。
       </p>
       <div class="account-grid">
         <div
@@ -35,18 +42,32 @@
       </template>
       <el-form label-position="top" :model="form" @submit.prevent>
         <el-form-item label="用户名">
-          <el-input v-model="form.username" placeholder="student01 / student02" />
+          <el-input
+            v-model="form.username"
+            placeholder="student01 / student02"
+          />
         </el-form-item>
         <el-form-item label="密码">
-          <el-input v-model="form.password" type="password" show-password placeholder="123456" />
+          <el-input
+            v-model="form.password"
+            type="password"
+            show-password
+            placeholder="123456"
+          />
         </el-form-item>
         <el-alert
-          title="说明：注册功能在本演示中省略，账号来自 db.json 预置数据。"
+          title="说明：注册功能在本项目中省略，账号来自 db.json 预置数据。"
           type="info"
           :closable="false"
           show-icon
         />
-        <el-button class="login-button" type="primary" size="large" :loading="loading" @click="submit">
+        <el-button
+          class="login-button"
+          type="primary"
+          size="large"
+          :loading="loading"
+          @click="submit"
+        >
           登录系统
         </el-button>
       </el-form>
@@ -55,63 +76,63 @@
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-import { ElMessage } from 'element-plus'
+import { computed, reactive } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { ElMessage } from "element-plus";
 
-const route = useRoute()
-const router = useRouter()
-const store = useStore()
+const route = useRoute();
+const router = useRouter();
+const store = useStore();
 
 const form = reactive({
-  username: 'student01',
-  password: '123456'
-})
+  username: "student01",
+  password: "123456",
+});
 
 const quickAccounts = [
   {
-    username: 'student01',
-    password: '123456',
-    name: '林知夏',
-    roleText: '学生',
-    avatar: '/images/avatar-student-a.png'
+    username: "student01",
+    password: "123456",
+    name: "吴锴旻",
+    roleText: "学生",
+    avatar: "/images/avatar-student-wu.svg",
   },
   {
-    username: 'student02',
-    password: '123456',
-    name: '陈屿',
-    roleText: '学生',
-    avatar: '/images/avatar-student-b.png'
-  }
-]
+    username: "student02",
+    password: "123456",
+    name: "李煜宽",
+    roleText: "学生",
+    avatar: "/images/avatar-student-li.svg",
+  },
+];
 
-const loading = computed(() => store.state.user.loading)
+const loading = computed(() => store.state.user.loading);
 
-const afterLogin = user => {
-  ElMessage.success(`欢迎回来，${user.name}`)
-  const redirect = route.query.redirect
+const afterLogin = (user) => {
+  ElMessage.success(`欢迎回来，${user.name}`);
+  const redirect = route.query.redirect;
   if (redirect) {
-    router.push(redirect)
-    return
+    router.push(redirect);
+    return;
   }
-  router.push('/')
-}
+  router.push("/");
+};
 
 const submit = async () => {
   try {
-    const user = await store.dispatch('user/login', form)
-    afterLogin(user)
+    const user = await store.dispatch("user/login", form);
+    afterLogin(user);
   } catch (error) {
-    ElMessage.error(error.message || '登录失败')
+    ElMessage.error(error.message || "登录失败");
   }
-}
+};
 
-const quickLogin = async account => {
-  form.username = account.username
-  form.password = account.password
-  await submit()
-}
+const quickLogin = async (account) => {
+  form.username = account.username;
+  form.password = account.password;
+  await submit();
+};
 </script>
 
 <style scoped>

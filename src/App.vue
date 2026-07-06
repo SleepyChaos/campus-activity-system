@@ -18,7 +18,9 @@
       >
         <el-menu-item index="/">首页</el-menu-item>
         <el-menu-item index="/activities">活动广场</el-menu-item>
-        <el-menu-item v-if="currentUser" index="/my/registrations">我的报名</el-menu-item>
+        <el-menu-item v-if="currentUser" index="/my/registrations"
+          >我的报名</el-menu-item
+        >
       </el-menu>
 
       <div class="account-area">
@@ -30,7 +32,9 @@
           </div>
           <el-button text type="primary" @click="logout">退出</el-button>
         </template>
-        <el-button v-else type="primary" @click="$router.push('/login')">登录</el-button>
+        <el-button v-else type="primary" @click="$router.push('/login')"
+          >登录</el-button
+        >
       </div>
     </el-header>
 
@@ -45,23 +49,23 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-import { ElMessage } from 'element-plus'
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { ElMessage } from "element-plus";
 
-const route = useRoute()
-const router = useRouter()
-const store = useStore()
+const route = useRoute();
+const router = useRouter();
+const store = useStore();
 
-const currentUser = computed(() => store.state.user.currentUser)
-const activePath = computed(() => route.path)
+const currentUser = computed(() => store.state.user.currentUser);
+const activePath = computed(() => route.path);
 
-const goHome = () => router.push('/')
+const goHome = () => router.push("/");
 
 const logout = () => {
-  store.dispatch('user/logout')
-  ElMessage.success('已退出登录')
-  router.push('/login')
-}
+  store.dispatch("user/logout");
+  ElMessage.success("已退出登录");
+  router.push("/login");
+};
 </script>

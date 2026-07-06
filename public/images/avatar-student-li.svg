@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-labelledby="title desc">
+  <title id="title">李煜宽头像</title>
+  <desc id="desc">蓝紫渐变背景上的李字头像</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+  </defs>
+  <rect width="220" height="220" rx="48" fill="url(#bg)" />
+  <circle cx="110" cy="110" r="76" fill="rgba(255,255,255,0.18)" />
+  <text
+    x="110"
+    y="122"
+    text-anchor="middle"
+    font-size="84"
+    font-family="'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif"
+    font-weight="700"
+    fill="#ffffff"
+  >
+    李
+  </text>
+</svg>
