@@ -1,48 +1,81 @@
 # 校园活动发布系统
 
-基于 Vue3 的前端交互期末大作业，选题 65：校园活动发布系统。项目使用 Vue CLI、Vue Router、Vuex、Axios、Element Plus 和 json-server，实现活动首页轮播图、分类筛选、详情展示、在线报名与取消、二维码签到、活动相册上传与查看。
+Vue 3 前端交互课程作品，选题 65：校园活动发布系统。围绕“浏览活动 → 报名 → 签到 → 查看相册”实现学生端演示流程，使用 json-server 提供本地模拟接口。
 
-## 技术栈
+这是课程演示版本：账号预置，登录与数据隔离由前端和模拟接口配合展示，没有正式用户认证服务或注册流程。
 
-- Vue3 + Vue CLI
-- Vue Router：超过 10 个路由，包含多个 params 路由
-- Vuex：用户、活动、报名、相册状态管理
-- Axios：统一请求 json-server RESTful API
-- Element Plus：轮播、卡片、表单、表格、弹窗、上传、标签、提示等组件
-- json-server：模拟后端接口和 JSON 数据
+## 功能
 
-## 预置账号
+- 首页轮播、推荐活动、关键词与分类/状态筛选。
+- 活动详情、报名确认、取消报名和个人报名记录。
+- 签到二维码生成与确认签到。
+- 活动相册查看及图片上传演示。
+- Vue Router 路由守卫、Vuex 状态管理及 Axios 请求封装。
 
-| 角色 | 用户名 | 密码 | 说明 |
-| --- | --- | --- | --- |
-| 学生 A | `student01` | `123456` | 可报名、取消、签到、上传相册 |
-| 学生 B | `student02` | `123456` | 用于演示不同用户报名记录互不影响 |
+技术栈：Vue 3、Vue CLI 5、Vue Router 4、Vuex 4、Element Plus、Axios、json-server 0.17。
 
-本项目不提供注册功能，因为后端使用 json-server 模拟接口，没有正式用户数据库。账号使用预置学生数据登录，适合课程答辩演示。
+## 本地运行
 
-## 运行方式
+需要 Node.js、npm 和可用的 `8080`、`3001` 端口。仓库保留 npm 锁文件，首次运行在仓库根目录执行：
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-如果不使用并发启动，也可以打开两个终端：
+`dev` 同时启动前端和模拟 API：
 
-```bash
-npm run api
-npm run serve
+- 前端：[http://localhost:8080](http://localhost:8080)
+- 模拟 API：[http://localhost:3001](http://localhost:3001)
+
+也可以分别在两个终端运行 `npm run api` 与 `npm run serve`。停止时在各终端按 `Ctrl+C`。
+
+## 演示账号与体验步骤
+
+| 角色 | 用户名 | 密码 |
+| --- | --- | --- |
+| 学生 A | `student01` | `123456` |
+| 学生 B | `student02` | `123456` |
+
+以上均为本地课程演示数据。
+
+1. 使用学生 A 登录，浏览活动并按关键词或分类筛选。
+2. 进入活动详情、提交报名，在“我的报名”中查看或取消。
+3. 对已报名活动打开签到页，生成二维码并确认签到。
+4. 进入活动相册，查看或上传一张演示图片。
+5. 切换学生 B，观察不同用户的报名记录。
+
+详细答辩流程见 [演示脚本](docs/DEMO_SCRIPT.md)。
+
+## 目录与数据
+
+```text
+src/api/           Axios 与 REST API 封装
+src/router/        路由及导航守卫
+src/store/         用户、活动、报名、相册状态
+src/views/         交互页面
+public/images/     演示图片
+db.json            json-server 的初始数据和运行数据
+docs/              接口说明与演示材料
 ```
 
-默认访问：
+报名、签到及相册操作会写回 `db.json`；重复演示前先备份需要保留的数据，再恢复演示基线。图片通过静态路径或 Base64 Data URL 保存，不提供独立文件存储服务。`logs/` 和 `runtime-logs/` 属于本地运行产物。
 
-- 前端页面：http://localhost:8080
-- 后端接口：http://localhost:3001
+## 构建与手动检查
 
-## 作业要求对应
+```bash
+npm run build
+```
 
-- 页面数量：主页、登录页、活动列表、分类页、详情页、报名页、我的报名、签到页、相册页、相册上传页、404。
-- 路由数量：超过 10 个。
-- 带参路由：`/activities/:id`、`/activities/category/:categoryId`、`/signup/:activityId`、`/checkin/:activityId`、`/albums/:activityId`、`/albums/:activityId/upload` 等。
-- API 数量：用户、活动、分类、报名、签到、相册等接口超过 5 处。
-- 业务流程：学生浏览活动并报名，报名后可取消或扫码签到，活动后可上传查看相册。
+构建输出为 `dist/`。当前 `package.json` 没有单元测试命令；构建后还需按上面的演示流程检查登录、筛选、报名、取消、签到与相册操作。
+
+## 课程要求对应与文档
+
+- 主页、登录、活动列表/分类/详情、报名、个人报名、签到、相册及 404 等页面。
+- 超过 10 个路由，包含活动 ID、分类 ID 等带参路由。
+- 用户、活动、分类、报名、相册等 RESTful 接口。
+- [API 说明](docs/API.md) · [答辩演示脚本](docs/DEMO_SCRIPT.md) · [学习计划](docs/LEARNING_PLAN.md)
+
+## 授权说明
+
+仓库目前未提供独立的项目许可证；第三方依赖遵循各自许可证。
